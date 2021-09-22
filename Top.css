@@ -1,0 +1,100 @@
+body{
+    padding: 0;
+    margin: 0;
+    border: 0;       
+}
+#Start_img {      
+    margin: 0;          
+    width: 100vw;
+    max-width: 100vw;    
+    height: auto;
+    z-index: 1;
+    overflow: scroll;
+
+}
+
+.Wave {
+    margin: 0;
+    position: relative;     
+    width: 100vw;    
+    margin-top: -7vw;
+    z-index:  5;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+}
+.page {
+    position: relative;
+    width: 100vw;
+    height: 100vh;        
+    margin-top: -8vw;
+    z-index:3;
+}
+
+#p1 {    
+    background-color:#2b3039;    
+}
+#p2 {    
+    background-color: #1B1E22;    
+}
+#p3 {
+    background-color: #08090A;    
+}
+#W1 {
+    fill: #2b3039;
+    stroke: #2b3039;
+}
+#W2 {
+    fill: #1B1E22;  
+    stroke: #1B1E22; 
+}
+#W3 {
+    fill: #08090A;
+    stroke: #08090A;
+}
+.Moon {
+    position: fixed;
+    top: 9vh; left: 1vw;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 100%;          
+}
+#Myellow {
+    background-color: yellow; 
+    z-index: 2;  
+}
+
+#Mwhite {
+    mix-blend-mode: overlay;
+    background-color: white;
+    filter: drop-shadow(0 0 30px #FFFFFF); 
+    z-index: 6;  
+}
+#Mwhite:hover {
+    mix-blend-mode: normal;
+    background-color: white;
+    filter: drop-shadow(0 0 30px #FFE200);
+    z-index: 6;
+}
+.title {
+    position: relative;
+    top: 5vw;;
+    text-align: center;
+    z-index:  6; 
+    padding: 2vw;    
+    color: white;
+    font-size: 5vh;
+
+}
+.Text { 
+    position: relative;
+    top: 5vw;;   
+    color: white;
+    text-align: center;    
+    font-size: 4vh;
+}
+.work_img {        
+    width: 60vw;
+    height: auto;
+    z-index: 3;
+}
