@@ -6,14 +6,11 @@
     <title>KEMIYA_top</title>
     <link rel="stylesheet" href="Top.css">
 </Head>
-
+<!--Top-->
 <img src="KEMIYA_Start.png" alt="聖堂と月" id="Start_img">
 
-
 <body>
-    <div class="Moon" id="Myellow"></div>
-    <div class="Moon" id="Mwhite"></div>
-    <div class="Wave" id="W1">
+    <div class="cls_Wave" id="W1">
         <svg id="レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1972 147.9">
             <defs>
                 <style>
@@ -38,11 +35,11 @@
             <rect class="cls-2" x="33" y="105.8" width="1906" height="9.1" />
         </svg>
     </div>
-    <div class="page" id="p1">
+    <div class="cls_page" id="p1">
         <h1 class="title">KEMIYAのプロフィール</h1>
         <p class="Text">Unityでゲームを作ったり、Blenderで３Dモデルを作ったりしている。</p>
     </div>
-    <div class="Wave" id="W2">
+    <div class="cls_Wave" id="W2">
         <svg id="レイヤー_1" data-name="レイヤ- 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1972 147.9">
             <defs>
                 <style>
@@ -66,7 +63,7 @@
             <rect class="cls-2" x="33" y="105.8" width="1906" height="9.1" />
         </svg>
     </div>
-    <div class="page" id="p2">
+    <div class="cls_page" id="p2">
         <h1 class="title">Skill</h1>
         <p class="Text">
             C#
@@ -78,7 +75,7 @@
             <br>Unity
         </p>
     </div>
-    <div class="Wave" id="W3">
+    <div class="cls_Wave" id="W3">
         <svg id="レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1972 147.9">
             <defs>
                 <style>
@@ -103,14 +100,28 @@
             <rect class="cls-2" x="33" y="105.8" width="1906" height="9.1" />
         </svg>
     </div>
-    <div class="page" id="p3">
+    <div class="cls_page" id="p3">
         <h1 class="title">Work</h1>
         <div class="Text">
             <img src="Game_img_1.png" alt="ゲームの画像" class="work_img">
         </div>
     </div>
-    <!--mudはアニメーション-->
-    <span class="mud" id="dark"></span>
+    <!--Moonはダークモード・ライトモード切り替えボタン、分かりにくいのでMdescriptionで説明している。-->
+    <div class="cls_Moon" id="Myellow"></div>
+    <div class="cls_Moon" id="Mwhite" ontouchstart="">
+        <div id="Mdescription"></div>
+    </div>
+    <!--cls_mudはライトモード・ダークモード切り替えアニメーション用-->
+    <span class="cls_mud" id="i_dark"></span>
+    <!--スクロールメニュー-->
+    <span class="cls_menu" id="id_menu">Menu
+        <div class="scroll_tears" id="tears_R"></div>
+        <div class="scroll_tears" id="tears_L"></div>
+        <a href="#Start_img" class="cls_item">Top</a>
+        <a  href="#W1" class="cls_item">About me</a>
+        <a  href="#W2" class="cls_item">Skills</a>
+        <a  href="#W3" class="cls_item">Works</a>        
+        </span>
     <script src="main.js" async></script>
 </body>
 

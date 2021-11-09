@@ -1,5 +1,34 @@
-/*基本てにz-indexはクラスに書いている。
-bodyが全部0なのは端っこから合わせたかったから。*/
+/*基本的にz-indexはクラスに書いている。
+bodyが全部0なのは端っこから合わせたかったから。
+
+/*命名規則
+クラス以外はあまり書かないけど、一応の命名規則
+cls == class;
+i == id;
+M == Moon;
+
+/*z-index順番
+Moon > Mud > Wave > Page , work_img > start_img
+Mudはクリックイベントを取らないようにしているので基本的には
+Mudを飛ばして見ていいけど、視覚的に改良するときは気をつけないといけない。
+
+説明終了*/
+
+
+/*htmlのリンク移動がスクロールになるやつ(scroll-behavior: smooth)*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/*bodyが全部0なのは端っこから合わせたかったから。*/
+
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
 
 :root[theme="light"] {
     /*ダークモード切り替えの変数*/
@@ -9,11 +38,22 @@ bodyが全部0なのは端っこから合わせたかったから。*/
     --dark1: #e7e7e7;
     --dark2: #c2c2c2;
     --dark3: #b1b1b1;
-    --text_color: #000000;
-    --title_color: #000000;
+    --text-color: #000000;
+    --title-color: #000000;
     /*月のボタンの変数*/
-    --moon_outside: #fff8bf;
-    --moon_inside: #474747;
+    --moon-outside: #fff8bf;
+    --moon-inside: #474747;
+    --moon-content: "ダ｜クモ｜ド切り替え";
+    --moon-content-color: #ffffff;
+    /*メニューの変数*/
+    --menu--opacity: 0.5;
+    --menu-opacity-hover: 0.98;
+    --menu-backcolor: #e2e2e2;
+    --menu-textcolor: #000000;
+    --tears-color: #000000;
+    --item-link-visited: #353434;
+    --item-hover: #fff5a7;
+    --item-acive: #fcee74;
 }
 
 :root[theme="dark"] {
@@ -24,47 +64,78 @@ bodyが全部0なのは端っこから合わせたかったから。*/
     --dark1: #2b3039;
     --dark2: #1B1E22;
     --dark3: #08090A;
-    --text_color: #ffffff;
-    --title_color: #ffffff;
+    --text-color: #ffffff;
+    --title-color: #ffffff;
     /*月のボタンの変数*/
-    --moon_outside: #FFE200;
-    --moon_inside: #ffffff;
+    --moon-outside: #FFE200;
+    --moon-inside: #ffffff;
+    --moon-content: "ライトモ｜ド切り替え";
+    --moon-content-color: #ffffff;
+    /*メニューの変数*/
+    --menu--opacity: 0.5;
+    --menu-opacity-hover: 0.95;
+    --menu-backcolor: #4e4e4e;
+    --menu-textcolor: #ffffff;
+    --tears-color: #e9e9e9;
+    --item-link-visited: #000000;
+    --item-hover: #fff8bf;
+    --item-acive: #fde846;
 }
 
 
-/*アニメーションを使うために変数を@propertyで登録したかったけど何故か@propertyが使えなかった。*/
+/*aタグのリンクの色とか調整*/
+
+a:link {
+    color: var(--item-link-visited);
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: var(--item-link-visited);
+}
+
+a:hover {
+    color: var(--item-hover);
+    text-decoration: none;
+    filter: drop-shadow(0 0 30px var(--item-hover));
+}
+
+a:active {
+    color: var(--item-acive);
+    text-decoration: none;
+}
 
 
+/*アニメーションを使うために変数を@propertyで登録したかったけど
+何故か@propertyが使えなかった。*/
+
+
+/*一応この方法でもダークモード・ライトモード切り替えできるけど、
+アニメーションと合わなかったので使わなかった。
 /*@media (prefers-color-scheme: dark) {
      :root {
         --dark1: #2b3039;
         --dark2: #1B1E22;
         --dark3: #08090A;
-        --moon_outside: #FFE200;
-        --moon_inside: #ffffff;
-        --text_color: #ffffff;
-        --title_color: #ffffff;
+        --moon-outside: #FFE200;
+        --moon-inside: #ffffff;
+        --text-color: #ffffff;
+        --title-color: #ffffff;
     }
 }
-
 @media (prefers-color-scheme: light) {
      :root {
         --dark1: #e7e7e7;
         --dark2: #c2c2c2;
         --dark3: #b1b1b1;
-        --moon_outside: #fff8bf;
-        --moon_inside: #474747;
-        --text_color: #000000;
-        --title_color: #000000;
+        --moon-outside: #fff8bf;
+        --moon-inside: #474747;
+        --text-color: #000000;
+        --title-color: #000000;
     }
 }
 */
-
-body {
-    padding: 0;
-    margin: 0;
-    border: 0;
-}
 
 
 /*大聖堂の画像でインパクトをつけるためのもの*/
@@ -82,7 +153,7 @@ body {
 
 /*波の部分でSVG:*/
 
-.Wave {
+.cls_Wave {
     margin: 0;
     position: relative;
     width: 100vw;
@@ -96,7 +167,7 @@ body {
 
 /*文字を書く部分のクラス*/
 
-.page {
+.cls_page {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -143,7 +214,7 @@ pageとwaveは数字ずつに対応している。*/
 z-indexやmix-blend-modeなどで下に行けば行くほど月の色が濁っていく表現している。
 MはMoonの略。*/
 
-.Moon {
+.cls_Moon {
     position: fixed;
     top: 9vh;
     left: 1vw;
@@ -153,24 +224,59 @@ MはMoonの略。*/
 }
 
 #Myellow {
-    background-color: var(--moon_outside);
+    background-color: var(--moon-outside);
     z-index: 2;
 }
 
 #Mwhite {
     display: block;
     mix-blend-mode: overlay;
-    background-color: var(--moon_inside);
-    filter: drop-shadow(0 0 30px var(--moon_inside));
+    background-color: var(--moon-inside);
+    filter: drop-shadow(0 0 30px var(--moon-inside));
     z-index: 6;
 }
 
 #Mwhite:hover {
     display: block;
     mix-blend-mode: normal;
-    background-color: var(--moon_inside);
-    filter: drop-shadow(0 0 30px var(--moon_outside));
+    background-color: var(--moon-inside);
+    filter: drop-shadow(0 0 30px var(--moon-outside));
     z-index: 6;
+}
+
+
+/*
+ダークモード・ライトモードを切り替えられる
+ことを伝えるためにMoonにホバーしたときに
+説明を出している。
+beforeがホバーしたとき。
+contentで出したい言葉を表示している。
+*/
+
+#Mdescription {
+    display: none;
+    background-color: #000000;
+    pointer-events: none;
+    z-index: 10;
+    position: absolute;
+    right: -30%;
+    content: var(--moon-content);
+    color: var(--moon-content-color);
+}
+
+#Mdescription::before {
+    background-color: #000000;
+    pointer-events: none;
+    z-index: 10;
+    position: absolute;
+    right: -30%;
+    content: var(--moon-content);
+    color: var(--moon-content-color);
+    font-size: 2vh;
+}
+
+#Mwhite:hover #Mdescription {
+    display: inline-block;
 }
 
 
@@ -180,9 +286,8 @@ MはMoonの略。*/
     position: relative;
     top: 5vw;
     text-align: center;
-    z-index: 6;
     padding: 2vw;
-    color: var(--title_color);
+    color: var(--title-color);
     font-size: 5vh;
 }
 
@@ -192,8 +297,7 @@ MはMoonの略。*/
 .Text {
     position: relative;
     top: 5vw;
-    ;
-    color: var(--text_color);
+    color: var(--text-color);
     text-align: center;
     font-size: 4vh;
 }
@@ -209,9 +313,11 @@ MはMoonの略。*/
 
 
 /*ここからダークモード・ライトモード切り替え用アニメーション
-pointer-eventsをnoneにすると当たり判定がなくなって便利*/
+pointer-eventsをnoneにすると当たり判定がなくなって便利
+mudがクラスである必要はないけど作ったときにクラスだったので
+クラスのままになっている、問題はないから多分idに直さないと思う。*/
 
-.mud {
+.cls_mud {
     pointer-events: none;
     opacity: 0;
     z-index: 5;
@@ -309,5 +415,120 @@ pointer-eventsをnoneにすると当たり判定がなくなって便利*/
     100% {
         opacity: 0;
         top: -50%;
+    }
+}
+
+
+/*
+スクロールメニュー
+fixedは原点が左上でwidthが20vwなのでpositionのleftは50から
+10引いて40vwにしている。
+*/
+
+.cls_menu {
+    z-index: 6;
+    position: fixed;
+    top: 0%;
+    left: 40vw;
+    display: block;
+    width: 20vw;
+    height: 10vh;
+    background: var(--menu-backcolor);
+    opacity: var(--menu--opacity);
+    text-align: center;
+    color: var(--menu-textcolor);
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+
+/*idでフォントとか中身を調整している。*/
+
+#id_menu {
+    font-size: 5vh;
+}
+
+
+/*メニューの中はホバーしていないとき、基本Display:noenにしている*/
+
+.cls_item {
+    display: none;
+}
+
+#tears_L {
+    pointer-events: none;
+    display: none;
+    position: fixed;
+    left: 0%;
+    top: 2vh;
+    width: 10vh;
+    height: 10vh;
+    background: var(--tears-color);
+    transform: rotate(45deg) translate(0, 0);
+    border-radius: 0% 100% 46% 54% / 0% 54% 46% 100%;
+    opacity: 1;
+    animation: dry_tears 3s ease-out 0s infinite normal;
+}
+
+#tears_R {
+    pointer-events: none;
+    display: none;
+    position: fixed;
+    right: 0%;
+    top: 2vh;
+    width: 10vh;
+    height: 10vh;
+    background: var(--tears-color);
+    transform: rotate(45deg) translate(0, 0);
+    border-radius: 0% 100% 46% 54% / 0% 54% 46% 100%;
+    opacity: 1;
+    animation: falling_tears 3s ease-out 0s infinite normal;
+}
+
+
+/*ホバーひとつひとつ分けないと動かなかったのでホバーがいっぱいある。*/
+
+.cls_menu:hover {
+    opacity: var(--menu-opacity-hover);
+    overflow: scroll;
+    left: 0%;
+    width: 100vw;
+    height: 40vh;
+}
+
+.cls_menu:hover #tears_L {
+    display: block;
+}
+
+.cls_menu:hover #tears_R {
+    display: block;
+}
+
+.cls_menu:hover .cls_item {
+    display: block;
+}
+
+
+/*スクロールメニュー用のアニメーション*/
+
+@keyframes falling_tears {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(45deg)
+    }
+    100% {
+        opacity: 0.7;
+        transform: translate(0, 20vh) rotate(45deg);
+    }
+}
+
+@keyframes dry_tears {
+    0% {
+        opacity: 0.7;
+        transform: translate(0, 20vh) rotate(-135deg)
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 0vh) rotate(-135deg);
     }
 }
