@@ -1,18 +1,8 @@
-/*基本的にz-indexはクラスに書いている。
-bodyが全部0なのは端っこから合わせたかったから。
-
-/*命名規則
-クラス以外はあまり書かないけど、一応の命名規則
-cls == class;
-i == id;
-M == Moon;
-
 /*z-index順番
 Moon > Mud > Wave > Page , work_img > start_img
 Mudはクリックイベントを取らないようにしているので基本的には
 Mudを飛ばして見ていいけど、視覚的に改良するときは気をつけないといけない。
-
-説明終了*/
+*/
 
 
 /*htmlのリンク移動がスクロールになるやつ(scroll-behavior: smooth)*/
@@ -107,40 +97,10 @@ a:active {
 }
 
 
-/*アニメーションを使うために変数を@propertyで登録したかったけど
-何故か@propertyが使えなかった。*/
-
-
-/*一応この方法でもダークモード・ライトモード切り替えできるけど、
-アニメーションと合わなかったので使わなかった。
-/*@media (prefers-color-scheme: dark) {
-     :root {
-        --dark1: #2b3039;
-        --dark2: #1B1E22;
-        --dark3: #08090A;
-        --moon-outside: #FFE200;
-        --moon-inside: #ffffff;
-        --text-color: #ffffff;
-        --title-color: #ffffff;
-    }
-}
-@media (prefers-color-scheme: light) {
-     :root {
-        --dark1: #e7e7e7;
-        --dark2: #c2c2c2;
-        --dark3: #b1b1b1;
-        --moon-outside: #fff8bf;
-        --moon-inside: #474747;
-        --text-color: #000000;
-        --title-color: #000000;
-    }
-}
-*/
-
-
 /*大聖堂の画像でインパクトをつけるためのもの*/
 
 #Start_img {
+    pointer-events: none;
     filter: drop-shadow(0 0 100vw #5fdcfc);
     margin: 0;
     width: 100vw;
@@ -429,7 +389,7 @@ fixedは原点が左上でwidthが20vwなのでpositionのleftは50から
     z-index: 6;
     position: fixed;
     top: 0%;
-    left: 40vw;
+    right: 0vw;
     display: block;
     width: 20vw;
     height: 10vh;
@@ -491,7 +451,7 @@ fixedは原点が左上でwidthが20vwなのでpositionのleftは50から
 .cls_menu:hover {
     opacity: var(--menu-opacity-hover);
     overflow: scroll;
-    left: 0%;
+    righ: 0%;
     width: 100vw;
     height: 40vh;
 }
